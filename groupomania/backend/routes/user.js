@@ -9,9 +9,9 @@ const auth = require('../middlewares/auth');
 const multer = require('../middlewares/multer');
 
 //Users actions roads//
-router.get('/', userCtrl.findAllUsers);
-router.get('/:id', userCtrl.findOneUser);
-router.put('/:id', multer, userCtrl.modifyUser);
-router.delete('/:id', userCtrl.deleteUser);
+router.get('/', auth, userCtrl.findAllUsers);
+router.get('/:id', auth, userCtrl.findOneUser);
+router.put('/:id', auth, multer, userCtrl.modifyUser);
+router.delete('/:id', auth, userCtrl.deleteUser);
 
 module.exports = router;

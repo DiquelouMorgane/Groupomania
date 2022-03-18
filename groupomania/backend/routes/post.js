@@ -6,10 +6,10 @@ const commentCtrl = require('../controllers/comment');
 const auth = require('../middlewares/auth');
 
 //Posts actions roads//
-router.get('/', postCtrl.findAllPosts);
-router.get('/:id', postCtrl.findOnePost);
-router.post('/', postCtrl.createPost);
-router.put('/:id', postCtrl.modifyPost);
-router.delete('/:id', postCtrl.deletePost);
+router.get('/', auth, postCtrl.findAllPosts);
+router.get('/:id', auth, postCtrl.findOnePost);
+router.post('/', auth, postCtrl.createPost);
+router.put('/:id', auth, postCtrl.modifyPost);
+router.delete('/:id', auth, postCtrl.deletePost);
 
 module.exports = router;
