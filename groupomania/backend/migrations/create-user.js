@@ -1,4 +1,4 @@
-//Complete user module to export to DB//
+//Complete user model to export to DB//
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {

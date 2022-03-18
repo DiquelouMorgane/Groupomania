@@ -1,4 +1,4 @@
-//Complete comment module to export to DB//
+//Complete comment model to export to DB//
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
