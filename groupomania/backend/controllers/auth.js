@@ -2,6 +2,7 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+//Create a new user with security password hash//
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.boy.password, 10)
     .then(hash => {
@@ -16,6 +17,7 @@ exports.signup = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
+//Find user in database and check the infos (mail and password) to compare them with infos taped, with a secure secret token//
 exports.login = (req, res, next) => {
     User.finOne({ email: req.body.email })
     .then(user => {
