@@ -20,12 +20,6 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      bio: {
-        type: Sequelize.STRING
-      },
-      imageUrl: {
-        type: Sequelize.STRING
-      },
       isAdmin: {
         type: Sequelize.BOOLEAN
       },

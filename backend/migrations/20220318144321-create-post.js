@@ -15,6 +15,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       postUrl: {
+        allowNull: true,
         type: Sequelize.STRING
       },
       userId: {
