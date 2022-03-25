@@ -1,37 +1,69 @@
-'use strict';
+const dbConfig = require("../config/db")
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
+const {Sequelize, DataTypes} = require("sequelize")
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+// Configuration sequelize
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+  host: dbConfig.HOST,
+  dialect: dbConfig.dialect,
+  pool: {
+    max: dbConfig.pool.max,
+    min: dbConfig.pool.min,
+    acquire: dbConfig.pool.acquire,
+    idle: dbConfig.pool.idle,
+  },
+})
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connecté à la Base de Données.")
   })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
+  .catch(err => {
+    console.log("error" + err)
+  })
 
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+const db = {}
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+db.Sequelize = sequelize
 
-module.exports = db;
+//Models roads//
+db.users = require("./user")(sequelize, DataTypes)
+db.posts = require("./post")(sequelize, DataTypes)
+db.comments = require("./comment")(sequelize, DataTypes)
+
+db.Sequelize.sync({force: false}).then(() => {
+  console.log("All models were synchronized successfully.")
+})
+
+// Foreign Keys
+db.users.hasMany(db.posts, {
+  foreignKey: "users_id",
+  as: "posts",
+})
+
+db.posts.belongsTo(db.users, {
+  foreignKey: "users_id",
+  as: "users",
+})
+
+db.posts.hasMany(db.comments, {
+  foreignKey: "post_id",
+  as: "comments",
+})
+
+db.comments.belongsTo(db.posts, {
+  foreignKey: "post_id",
+  as: "posts",
+})
+db.users.hasMany(db.comments, {
+  foreignKey: "users_id",
+  as: "comments",
+})
+
+db.comments.belongsTo(db.users, {
+  foreignKey: "users_id",
+  as: "users",
+})
+
+module.exports = db
