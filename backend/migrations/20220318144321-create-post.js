@@ -8,17 +8,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
-        type: Sequelize.STRING
-      },
-      content: {
-        type: Sequelize.TEXT
-      },
-      postUrl: {
+      text_content: {
         allowNull: true,
         type: Sequelize.STRING
       },
-      userId: {
+      imageUrl: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      users_id: {
         type: Sequelize.INTEGER
       },
       createdAt: {
