@@ -3,11 +3,12 @@ const fs = require('fs');
 
 //Create a post//
 exports.createPost = (req, res, next) => {
-    const postObject = JSON.parse(req.body.post);
-    delete postObject._id;
+    console.log(req.body);
+    /*const postObject = JSON.parse(req.body);
+    delete postObject._id;*/
     const post = new Post({
         //Copy the request fields, except the Id which will be generated with the database//
-        ...postObject,
+        content: req.body.text_content,
         //Create the picture URL//
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });

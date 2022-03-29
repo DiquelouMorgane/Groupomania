@@ -1,8 +1,8 @@
 module.exports = {
-    HOST: process.env.SECRET_HOST,
-    USER: process.env.SECRET_USER,
-    PASSWORD: process.env.SECRET_PASSWORD,
-    DB: process.env.SECRET_DB,
+    HOST: "localhost",
+    USER: "admin",
+    PASSWORD: ".yseVd!wS2/@pcw]",
+    DB: "groupomania",
     dialect: "mysql",
   
     pool: {

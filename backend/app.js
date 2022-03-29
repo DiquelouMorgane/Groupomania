@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
+var cors = require('cors');
 
 //Roads import//
 const authRoutes = require('./routes/auth');
@@ -10,27 +11,13 @@ const postRoutes = require('./routes/post');
 const commentRoutes = require('./routes/comment');
 
 //CORS to authorize actions from the port 3000//
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-    if (req.method === 'OPTIONS') {
-      res.send(200);
-    }
-    else {
-      next();
-    }
-  });
+app.use(cors())
 
 //Parse application/json content-type requests//
 app.use(bodyParser.json());
 
 //Call models in database//
 const db = require("./models");
-db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
-});
 
 //Save routers//
 app.use('/images', express.static(path.join(__dirname, 'images')));
