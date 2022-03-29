@@ -4,13 +4,10 @@ const router = express.Router();
 
 const userCtrl = require('../controllers/user');
 
-const auth = require('../middlewares/auth');
-const multer = require('../middlewares/multer');
+const auth = require('../middlewares/authToken');
 
 //Users actions roads//
-router.get('/', auth, userCtrl.getAllUser);
-router.get('/:id', auth, userCtrl.getOneUser);
-router.put('/:id', auth, multer, userCtrl.modifyUser);
-router.delete('/:id', auth, userCtrl.deleteUser);
+router.put("/", auth, userCtrl.updateUser)
+router.delete("/", auth, userCtrl.deleteUser)
 
 module.exports = router;
