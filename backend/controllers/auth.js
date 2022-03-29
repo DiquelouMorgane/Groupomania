@@ -2,47 +2,68 @@ const db = require("../models");
 const User = db.users;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require("dotenv").config();
 
 //Create a new user with security password hash//
-exports.signup = (req, res, next) => {
-    bcrypt.hash(req.body.password, 10)
-    .then(hash => {
-        const user = new User({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            password: hash
-        });
-        user.save()
-        .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-        .catch(error => res.status(400).json({ error }));
-    })
-    .catch(error => res.status(500).json({ error }));
+module.exports.signup = async (req, res) => {
+    const hash = await bcrypt.hash(req.body.password, 10)
+    let newUser = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: hash,
+    }
+    try {
+        const user = await User.findOne({
+            where: {email: req.body.email},
+        })
+        if (user) {
+            console.log("Already registered", user.dataValues)
+            return res.status(403).send({error: "Vous êtes déjà inscrit !"})
+        } else {
+            const user = await User.create(newUser)
+            res.status(200).json({
+                id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                token: jwt.sign({userId: user.id}, process.env.SECRET_JWT, {
+                    expiresIn: "24h",
+                }),
+            })
+        }
+    } catch (error) {
+        return res.status(500).send({error: "Erreur Serveur !"})
+    }
 };
 
 //Find user in database and check the infos (mail and password) to compare them with infos taped, with a secure secret token//
-exports.login = (req, res, next) => {
-    User.findOne({ email: req.body.email })
-    .then(user => {
-        if (!user) {
-            return res.status(401).json({ error: 'Utilisateur non trouvé !'});
-        }
-        console.log(req.body.password,user.password)
-        bcrypt.compare(req.body.password, user.password)
-        .then(valid => {
-            /*if (!valid) {
-                return res.status(401).json({ error: 'Mot de passe incorrect !'});
-            }*/
-            res.status(200).json({
-                userId: user.id,
-                token: jwt.sign(
-                    { userId: user.id },
-                    'Token',
-                    { expiresIn: '24h'}
-                )
-            });
+module.exports.login = (req, res) => {
+    try {
+        const user = await User.findOne({
+            where: {email: req.body.email},
         })
-        .catch(error => res.status(500).json({ error }));
-    })
-    .catch(error => res.status(500).json({ error }));
+        if (user == null) {
+            return res.status(403).send({error: "Vous n'êtes pas encore inscrit !"})
+        } else {
+            console.log("User found !", user.dataValues)
+            const valid = await bcrypt.compare(req.body.password, user.password)
+            if (!valid) {
+                return res.status(401).json({error: "Mot de passe incorrect !"})
+            } else {
+                res.status(200).json({
+                    id: user.id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    admin: user.admin,
+                    token: jwt.sign({userId: user.id}, process.env.SECRET_JWT, {
+                        expiresIn: "24h",
+                    }),
+                })
+            }
+        }
+    } catch (error) {
+        return res.status(500).send({error: "Erreur serveur !"})
+    }
 };
