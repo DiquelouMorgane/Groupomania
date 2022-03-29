@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  @include text(1rem);
+}
+button:hover,
+.button:hover {
+  cursor: pointer;
+  transform: scale(1.09);
+}
+span {
+  color: rgb(189, 189, 189);
+  font-style: italic;
+  font-size: 0.9rem;
+  width: 100%;
+  padding-left: 130px;
+}

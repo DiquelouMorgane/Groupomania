@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login/login';
 import Profil from './pages/Profil/profil';
 import Post from './pages/Post/post';
-import './styles/_settings.scss';
+import "./styles/main.css";
 
 function App() {
     return (
-        <Router>
+      <Router>
         <Routes>
           <Route exact path="/" element={<Login />}/>
           <Route path="/profil" element={<Profil />}/>

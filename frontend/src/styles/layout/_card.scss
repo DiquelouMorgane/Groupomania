@@ -1,0 +1,18 @@
+.card {
+  border-radius: 5px;
+  width: 70%;
+  min-width: 360px;
+  margin: 20px auto;
+  padding: 20px;
+  list-style: none;
+  background-color: rgb(228, 206, 206);
+}
+
+@media screen and (max-width: 700px) {
+  .card {
+    border-radius: 0;
+    width: 100%;
+    min-width: 0;
+    padding: 20px 0px;
+  }
+}

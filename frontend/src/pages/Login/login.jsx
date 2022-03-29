@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import Header from "../../components/Header/header";
 import SigninForm from "./SigninForm";
 import SignupForm from "./SignupForm";
-import "../../styles/index.scss";
+import Header from "../../components/header";
 
-const Log = ( props ) => {
-    const [signUpModal, setSignUpModal] = useState(props.signup);
-    const [signInModal, setSignInModal] = useState(props.signin);
+const Log = () => {
+    const [signUpModal, setSignUpModal] = useState(true);
+    const [signInModal, setSignInModal] = useState(false);
 
     const handleModals = (e) => {
         if (e.target.id === "register") {
@@ -18,19 +17,18 @@ const Log = ( props ) => {
         }
     }
     return (
-        <div className="header__login">
+        <div className="main">
             <Header />
-            <div className="connectionForm">
-                <div className="formContainer">
-                    <ul>
-                        <li onClick={handleModals} id="register" className={signUpModal ? "active-button" : null}>S'inscrire</li>
-                        <li onClick={handleModals} id="login" className={signInModal ? "active-button" : null}>Se connecter</li>
-                    </ul>
-                    {signUpModal && <SignupForm />}
-                    {signInModal && <SigninForm />}
-                </div>
-                <img className="form_logo" src="../../images/form_logo" alt="groupomania logo"/>
+            <div className="header__login">
+            <div className="form-container">
+                <ul>
+                    <li onClick={handleModals} id="register" className={signUpModal ? "active-button" : null}>S'inscrire</li>
+                    <li onClick={handleModals} id="login" className={signInModal ? "active-button" : null}>Se connecter</li>
+                </ul>
+                {signUpModal && <SignupForm />}
+                {signInModal && <SigninForm />}
             </div>
+        </div>
         </div>
     );
 };

@@ -2,8 +2,8 @@ import axios from "axios"
 
 const DeleteProfil = () => {
   const handleDelete = () => {
-    let userInfo = JSON.parse(localStorage.getItem("userInfo"))
-    let userId = userInfo.id
+    let newUser = JSON.parse(localStorage.getItem("newUser"))
+    let userId = newUser.id
     axios({
       method: "DELETE",
       url: "http://localhost:5000/api/users",

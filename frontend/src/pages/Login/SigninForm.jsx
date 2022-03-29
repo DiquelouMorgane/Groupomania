@@ -33,7 +33,7 @@ const Login = () => {
         console.log(token + newUser)
         localStorage.setItem("Token", token)
         localStorage.setItem("newUser", newUser)
-        navigate("/posts")
+        navigate("/profil")
       })
       .catch(err => {
         console.log(err)

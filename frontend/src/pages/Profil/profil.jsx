@@ -1,13 +1,14 @@
 import axios from "axios"
 import {useForm} from "react-hook-form"
 import DeleteProfil from "./deleteProfil"
+import Header from "../../components/header"
 
 const Profil = () => {
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"))
-  const firstnameUser = userInfo.firstname
-  const lastnameUser = userInfo.lastname
-  const id = userInfo.id
-  const email = userInfo.email
+  const newUser = JSON.parse(localStorage.getItem("newUser"))
+  const firstNameUser = newUser.firstName
+  const lastNameUser = newUser.lastName
+  const id = newUser.id
+  const email = newUser.email
 
   const {
     register,
@@ -17,8 +18,8 @@ const Profil = () => {
 
   const onSubmit = data => {
     console.log(data)
-    let firstname = data.firstname
-    let lastname = data.lastname
+    let firstName = data.firstName
+    let lastName = data.lastName
     let email = data.email
 
     axios({
@@ -30,14 +31,14 @@ const Profil = () => {
       params: {userId: id},
       data: {
         id,
-        firstname,
-        lastname,
+        firstName,
+        lastName,
         email,
       },
     })
       .then(res => {
-        let userInfo = JSON.stringify(res.data.user)
-        localStorage.setItem("userInfo", userInfo)
+        let newUser = JSON.stringify(res.data.user)
+        localStorage.setItem("newUser", newUser)
       })
       .catch(err => {
         console.log(err)
@@ -46,21 +47,22 @@ const Profil = () => {
 
   return (
     <div className="user">
+      <Header />
       <div className="user-welcome">
-        <h1>Bienvenue {firstnameUser}</h1>
+        <h1>Bienvenue {firstNameUser}</h1>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="user-form">
         <div className="data-form">
-          <label htmlFor="prenom" className="user-form-label">
+          <label htmlFor="firstName" className="user-form-label">
             Prénom
           </label>
           <br />
           <input
             type="text"
             className="user-form-input"
-            placeholder={firstnameUser}
-            {...register("firstname", {
+            placeholder={firstNameUser}
+            {...register("firstName", {
               minLength: {
                 value: 2,
                 message: "Le prénom entré est trop court !",
@@ -71,18 +73,18 @@ const Profil = () => {
               },
             })}
           />
-          {errors.firstname && <span>{errors.firstname.message}</span>}
+          {errors.firstName && <span>{errors.firstName.message}</span>}
           <br />
 
-          <label htmlFor="lastname" className="user-form-label">
+          <label htmlFor="lastName" className="user-form-label">
             Nom
           </label>
           <br />
           <input
             type="text"
             className="user-form-input"
-            placeholder={lastnameUser}
-            {...register("lastname", {
+            placeholder={lastNameUser}
+            {...register("lastName", {
               minLength: {
                 value: 2,
                 message: "Le nom entré est trop court !",
@@ -93,7 +95,7 @@ const Profil = () => {
               },
             })}
           />
-          {errors.lastname && <span>{errors.lastname.message}</span>}
+          {errors.lastName && <span>{errors.lastName.message}</span>}
           <br />
           <label htmlFor="email" className="user-form-label">
             Email

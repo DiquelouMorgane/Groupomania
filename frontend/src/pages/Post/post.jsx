@@ -1,26 +1,49 @@
-import React from "react";
-import '../Post/_post.scss';
-import Avatar from '@material-ui/core/Avatar';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import PostsCard from "./PostsCard";
+import PostForm from "./PostForm";
 
-function Post({ userId, content, imageUrl }) {
+const GetAllPosts = () => {
+    const [data, setData] = useState([])
+    const Token = localStorage.getItem("Token")
+    const userId = JSON.parse(localStorage.getItem("newUser")).id 
+
+    useEffect(() => {
+        axios
+        .get("http://localhost:5000/api/posts", {
+            headers: {
+                "x-access-token": Token,
+            },
+            params: {userId: userId},
+        })
+        .then(res => {
+            setData(res.data)
+        })
+    }, [Token, setData, userId])
+    const firstNameUser = JSON.parse(localStorage.getItem("newUser")).firstName
+    const addnewpost = () => {
+        window.location.reload()
+    }
     return (
-        <div className="post">
-            <div className="post__header">
-                <Avatar 
-                className="post__avatar"
-                alt="avatar picture"
-                src="./images/avatar.jpg"
-                />
-                <h3>{userId}</h3>
-            </div>
-            <img
-            className="post__picture"
-            src={imageUrl}
-            alt=""
-            />
-            <h4 className="post__text"><strong>{userId}</strong>{content}</h4>
+        <div className="posts">
+          <div className="welcome">
+            <h1>Bienvenue {firstNameUser}</h1>
+          </div>
+          <div>
+            <PostForm addPost={addnewpost}></PostForm>
+          </div>
+          <ul className="posts-list">
+            {data.map((posts, i) => (
+              <PostsCard
+                className="post-card"
+                post={posts}
+                key={i}
+                addPost={addnewpost}
+              />
+            ))}
+          </ul>
         </div>
-    )
+      )
 }
 
-export default Post;
+export default GetAllPosts;

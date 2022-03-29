@@ -23,8 +23,8 @@ const SignUpForm = () => {
       method: "POST",
       url: `http://localhost:5000/api/auth/signup`,
       data: {
-        firstname: data.firstname,
-        lastname: data.lastname,
+        firstName: data.firstName,
+        lastName: data.lastName,
         email: data.email,
         password: data.password,
       },
@@ -34,7 +34,7 @@ const SignUpForm = () => {
         let newUser = JSON.stringify(res.data)
         localStorage.setItem("Token", token)
         localStorage.setItem("newUser", newUser)
-        navigate("/posts")
+        navigate("/profil")
       })
       .catch(error => {
         console.log(error)
@@ -46,11 +46,11 @@ const SignUpForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="accueil-form">
-        {/* firstname */}
-        <label htmlFor="firstname">Prénom</label>
+        {/* firstName */}
+        <label htmlFor="firstName">Prénom</label>
         <br />
         <input
-          {...register("firstname", {
+          {...register("firstName", {
             required: true,
             minLength: {
               value: 2,
@@ -62,14 +62,14 @@ const SignUpForm = () => {
             },
           })}
         />
-        {errors.firstname && <span>{errors.firstname.message}</span>}
+        {errors.firstName && <span>{errors.firstName.message}</span>}
         <br />
-        {/* lastname */}
-        <label htmlFor="lastname">Nom</label>
+        {/* lastName */}
+        <label htmlFor="lastName">Nom</label>
         <br />
         <input
           type="text"
-          {...register("lastname", {
+          {...register("lastName", {
             required: true,
             minLength: {
               value: 2,
@@ -81,7 +81,7 @@ const SignUpForm = () => {
             },
           })}
         />
-        {errors.lastname && <span>{errors.lastname.message}</span>}
+        {errors.lastName && <span>{errors.lastName.message}</span>}
         <br />
         {/* email */}
         <label htmlFor="email">Email</label>
