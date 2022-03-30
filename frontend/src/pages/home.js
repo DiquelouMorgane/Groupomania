@@ -1,4 +1,4 @@
-import Log from "../components/Log";
+import Log from "../components/Log/login";
 import Nav from "../components/Navigation";
 
 const Home = () => {

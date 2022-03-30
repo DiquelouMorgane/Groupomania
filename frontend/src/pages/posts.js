@@ -1,4 +1,4 @@
-import SecuredConnexion from "../components/Log/SecuredConnection";
+import SecuredConnexion from "../components/Log/SecuredConnexion";
 import GetAllPosts from "../components/Post/post";
 import Nav from "../components/Navigation";
 

@@ -1,4 +1,4 @@
-.header__login {
+.connection-form {
   background-color: rgb(255, 215, 215);
   margin: 30px auto;
   padding: 40px;
@@ -28,7 +28,7 @@
   }
 }
 @media screen and (max-width: 700px) {
-  .header__login {
+  .connection-form {
     margin: 10px auto;
     padding: 0;
     border-radius: 0;

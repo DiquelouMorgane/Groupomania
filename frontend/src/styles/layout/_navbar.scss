@@ -1,12 +1,12 @@
 .nav {
-  background-color: $transparent-pink;
+  background-color: $soft-pink;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 5px 30px;
   // border-bottom: 2px solid rgb(118, 118, 165);
-  box-shadow: 0 2px 4px rgb(82, 80, 100);
+  box-shadow: 0 2px 4px #ff7b77;
   &-logo {
     display: flex;
     flex-direction: row;

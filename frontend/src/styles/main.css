@@ -21,7 +21,7 @@ span {
 }
 
 .nav {
-  background-color: #ffd0c4;
+  background-color: #ff7b77;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -34,8 +34,8 @@ span {
       -ms-flex-align: center;
           align-items: center;
   padding: 5px 30px;
-  -webkit-box-shadow: 0 2px 4px #ff7b77;
-          box-shadow: 0 2px 4px #ff7b77;
+  -webkit-box-shadow: 0 2px 4px #ffd0c4;
+          box-shadow: 0 2px 4px #ffd0c4;
 }
 
 .nav-logo {
@@ -67,9 +67,9 @@ span {
 }
 
 .nav-logo-link-community {
-  font-family: "Lora", serif;
-  font-size: 1.5rem;
-  color: rgb(40, 40, 40);
+  font-family: "Antipasto";
+  font-size: 1.8rem;
+  color: white;
   margin-bottom: 5px;
 }
 
@@ -185,7 +185,7 @@ footer .logofooter {
 }
 
 .error-message {
-  color: rgb(40, 40, 40);
+  color: red;
   margin: 10px;
   padding: 10px 20px;
   text-align: center;
@@ -195,31 +195,26 @@ footer .logofooter {
 .post-button {
   padding: 10px 20px;
   margin: 10px 20px;
-  background-color: rgb(40, 40, 40);
-  color: white;
+  background-color: #ff7b77;
+  color: rgb(40, 40, 40);
   border-radius: 25px;
   border: none;
-  -webkit-box-shadow: 0.5px 1px 3px #5f5f5f;
-          box-shadow: 0.5px 1px 3px #5f5f5f;
+  -webkit-box-shadow: 0.5px 1px 3px white;
+          box-shadow: 0.5px 1px 3px white;
 }
 
-.main-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.header__login {
+.connection-form {
   background-color: #ff7b77;
   margin: 30px auto;
   padding: 40px;
-  border-radius: 4px;
-  -webkit-box-shadow: 3px 3px 3px #a1a1a1;
-          box-shadow: 3px 3px 3px #a1a1a1;
+  border-radius: 50px;
+  -webkit-box-shadow: 3px 3px 3px #ffd0c4;
+          box-shadow: 3px 3px 3px #ffd0c4;
   width: 50%;
   min-width: 400px;
 }
 
-.header__login .form-container {
+.connection-form .form-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -232,28 +227,28 @@ footer .logofooter {
           align-items: center;
 }
 
-.header__login .form-container ul {
+.connection-form .form-container ul {
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.header__login .form-container ul li {
+.connection-form .form-container ul li {
   margin: 5px 30px;
-  background-color: #fdeeee;
+  background-color: white;
   font-weight: bold;
   color: rgb(40, 40, 40);
   padding: 10px 25px;
   border-radius: 30px;
-  -webkit-box-shadow: 2px 2px 2px #ffd0c4;
-          box-shadow: 2px 2px 2px #ffd0c4;
+  -webkit-box-shadow: 2px 2px 2px white;
+          box-shadow: 2px 2px 2px white;
   width: 120px;
   text-align: center;
 }
 
 @media screen and (max-width: 700px) {
-  .header__login {
+  .connection-form {
     margin: 10px auto;
     padding: 0;
     border-radius: 0;
@@ -262,7 +257,7 @@ footer .logofooter {
     width: 100%;
     min-width: 0px;
   }
-  .header__login .form-container ul li {
+  .connection-form .form-container ul li {
     margin: 10px 5px;
     font-weight: 200;
     padding: 10px 15px;
@@ -270,8 +265,7 @@ footer .logofooter {
 }
 
 .accueil-form {
-  border: solid, whitesmoke, 2px;
-  border-radius: 5px;
+  border-radius: 50px;
   background-color: #ffd0c4;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -297,7 +291,7 @@ footer .logofooter {
   -webkit-box-shadow: none;
           box-shadow: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 .accueil-form label {
@@ -305,7 +299,8 @@ footer .logofooter {
   padding: 3px 5px;
   -webkit-box-shadow: none;
           box-shadow: none;
-  border: none;
+  border-radius: 20px;
+  background-color: white;
   color: rgb(40, 40, 40);
 }
 
@@ -343,6 +338,7 @@ footer .logofooter {
   font-weight: 900;
   font-weight: bold;
   text-align: center;
+  color: rgb(40, 40, 40);
 }
 
 .posts .post-form {
@@ -361,9 +357,9 @@ footer .logofooter {
   justify-items: baseline;
   margin: 20px auto;
   padding: 20px 10px;
-  background-color: rgba(148, 164, 189, 0.336);
-  border-radius: 5px;
-  border: 1px solid #a7a7a7;
+  background-color: #ffd0c4;
+  border-radius: 30px;
+  border: 1px solid #ff7b77;
   padding: 20px 50px;
 }
 
@@ -379,8 +375,8 @@ footer .logofooter {
 .posts .post-form .column1 .text_content_input {
   width: 95%;
   height: 150px;
-  border-radius: 15px 15px 3px 15px;
-  border: 1px solid #949494;
+  border-radius: 30px;
+  border: 1px solid #ff7b77;
   margin: 20px 0;
   padding: 8px;
 }
@@ -557,9 +553,9 @@ footer .logofooter {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
+  -webkit-box-pack: flex-end;
+      -ms-flex-pack: flex-end;
+          justify-content: flex-end;
   margin-left: 20px;
 }
 
@@ -684,15 +680,16 @@ footer .logofooter {
   font-family: "Roboto", sans-serif;
   font-size: 1.1rem;
   font-weight: bold;
-  color: rgba(5, 5, 5, 0.842);
+  color: rgb(40, 40, 40);
   margin: 15px;
 }
 
 .user-form-input {
   margin: 10px;
   font-size: 1.2rem;
-  background-color: whitesmoke;
-  border-radius: 10px;
+  background-color: rgba(210, 105, 30, 0);
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.315);
   color: rgb(40, 40, 40);
   font-weight: bold;
   min-width: 270px;

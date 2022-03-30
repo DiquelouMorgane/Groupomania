@@ -1,17 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './pages/Login/login';
-import Profil from './pages/Profil/profil';
-import Post from './pages/Post/post';
+import Home from './pages/home';
+import Profil from './pages/profil';
+import Posts from './pages/posts';
 import "./styles/main.css";
 
 function App() {
     return (
       <Router>
         <Routes>
-          <Route exact path="/" element={<Login />}/>
+          <Route exact path="/" element={<Home />}/>
           <Route path="/profil" element={<Profil />}/>
-          <Route path="/post" element={<Post />}/>
+          <Route path="/post" element={<Posts />}/>
         </Routes>
       </Router>
     );
