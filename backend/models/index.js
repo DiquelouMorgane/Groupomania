@@ -28,9 +28,9 @@ const db = {}
 db.Sequelize = sequelize
 
 //Models roads//
-db.users = require("./user")(sequelize, DataTypes)
-db.posts = require("./post")(sequelize, DataTypes)
-db.comments = require("./comment")(sequelize, DataTypes)
+db.users = require("./users")(sequelize, DataTypes)
+db.posts = require("./posts")(sequelize, DataTypes)
+db.comments = require("./comments")(sequelize, DataTypes)
 
 db.Sequelize.sync({force: false}).then(() => {
   console.log("All models were synchronized successfully.")

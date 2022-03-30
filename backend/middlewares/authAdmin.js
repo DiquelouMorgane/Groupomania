@@ -1,9 +1,9 @@
 module.exports = async (req, res, next) => {
-    const user_id = req.body.user_id
+    const userId = req.body.userId
     const admin = req.body.admin
-    const author_user_id = req.body.user_id
+    const author_userId = req.body.userId
   
-    if (user_id === author_user_id || admin === 1) {
+    if (userId === author_userId || admin === 1) {
       next()
     } else {
       res.send(401).json("Vous n'êtes pas habilité à réaliser cette action !")

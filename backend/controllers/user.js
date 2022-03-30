@@ -1,5 +1,5 @@
-const User = require("../models/");
-const User = db.users;
+const db = require("../models");
+const User = db.posts;
 
 //Modify a user//
 const updateUser = async (req, res) => {
@@ -36,7 +36,7 @@ const updateUser = async (req, res) => {
 };
 
 //Delete a user//
-exports.deleteUser = async (req, res) => {
+const deleteUser = async (req, res) => {
     try {
         const user = await User.findOne({where: {id: req.body.id}})
         console.log("User to delete : ", user.dataValues)
@@ -45,4 +45,9 @@ exports.deleteUser = async (req, res) => {
     } catch (error) {
         return res.status(500).send({error: "Erreur serveur !"})
     }
+};
+
+module.exports = {
+    updateUser,
+    deleteUser,
 };

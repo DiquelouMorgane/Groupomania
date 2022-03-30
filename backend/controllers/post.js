@@ -1,14 +1,13 @@
-const Post = require("../models");
-const fs = require('fs');
+const db = require("../models");
 const Post = db.posts;
-const User = db.users;
+const fs = require('fs');
 
 //Create a post//
-const CreatePost = async (req, res) => {
+const createPost = async (req, res) => {
     try {
         const user = await User.findOne({
             attributes: ["firstName", "lastName", "id"],
-            where: {id: req.body.user_id},
+            where: {id: req.body.userId},
         })
         if (user !== null) {
             console.log("user : ", user)
@@ -20,7 +19,7 @@ const CreatePost = async (req, res) => {
                 imageUrl = null
             }
             const post = await Post.create({
-                users_id: req.body.user_id,
+                users_id: req.body.userId,
                 text_content: req.body.text_content,
                 imageUrl: imageUrl,
             })
