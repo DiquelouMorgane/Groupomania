@@ -24,14 +24,14 @@ const PostsCard = props => {
     //Retrieve user infos in localstorage//
     let newUser = JSON.parse(localStorage.getItem("newUser"))
     let users_id = newUser.id
-    let users_admin = newUser.admin
+    let users_isAdmin = newUser.isAdmin
   
     //Delete icon//
     useEffect(() => {
-      if (post.users_id === users_id || users_admin === 1) {
+      if (post.users_id === users_id || users_isAdmin === 1) {
         setShowDeleteIcon(true)
       }
-    }, [users_id, post.users_id, users_admin])
+    }, [users_id, post.users_id, users_isAdmin])
   
     //Delete function//
     const handleDelete = () => {
@@ -44,8 +44,8 @@ const PostsCard = props => {
         data: {
           id: post.id,
           users_id: users_id,
-          admin: users_admin,
-          post_userId: post.users_id,
+          isAdmin: users_isAdmin,
+          post_user_id: post.users_id,
         },
       })
         .then(res => {
@@ -80,7 +80,7 @@ const PostsCard = props => {
                 }}
               >
                 <img
-                  src={"../images/delete.svg"}
+                  src={"../images/icons/delete.png"}
                   alt="delete-comment"
                   className="delete-img"
                 />
@@ -101,7 +101,7 @@ const PostsCard = props => {
             <div className="comment-icone">
               <img
                 onClick={() => setShowComments(!showComments)}
-                src="./images/chat.png"
+                src="../images/icons/chat.png"
                 alt="chat"
                 className="button"
               />

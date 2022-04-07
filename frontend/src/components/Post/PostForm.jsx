@@ -10,13 +10,13 @@ const PostForm = props => {
     formState: {errors},
   } = useForm()
 
-  const [imageUrl, setimageUrl] = useState(null)
+  const [imageUrl, setImageUrl] = useState(null)
   const [file, setFile] = useState(false)
   const [emptyMessage, setEmptyMesssage] = useState(null)
 
   //Retrieve the picture infos//
   const handlePicture = e => {
-    setimageUrl(URL.createObjectURL(e.target.files[0]))
+    setImageUrl(URL.createObjectURL(e.target.files[0]))
     setFile(e.target.files[0])
   }
 
@@ -25,19 +25,19 @@ const PostForm = props => {
     if (content.text_content || file) {
       //Empty message//
       setEmptyMesssage(false)
-      const userId = JSON.parse(localStorage.getItem("newUser")).id
+      const user_id = JSON.parse(localStorage.getItem("newUser")).id
       let data
       //Requests with a picture//
       if (file) {
         axios.defaults.headers.post["Content-Type"] = "multipart/form-data"
         data = new FormData()
-        data.append("userId", userId)
+        data.append("user_id", user_id)
         data.append("text_content", content.text_content)
         data.append("file", file)
       } else {
         axios.defaults.headers.post["Content-Type"] =
           "application/x-www-form-urlencoded"
-        data = {userId: userId, text_content: content.text_content}
+        data = {user_id: user_id, text_content: content.text_content}
       }
       // POST
       await axios({
@@ -46,7 +46,6 @@ const PostForm = props => {
         headers: {
           "authorization": `Bearer ${localStorage.getItem("Token")}`,
         },
-        params: {userId: userId},
         data,
       })
         .then(res => {
@@ -87,9 +86,9 @@ const PostForm = props => {
             {errors.text_content && <span>{errors.text_content.message}</span>}
           </div>
           <div className="column2">
-            <label for="imageUrl">
+            <label htmlFor="imageUrl">
               <img
-                src={"../images/icons/picture.svg"}
+                src={"../images/icons/picture.png"}
                 alt="logo"
                 className="add_media, button"
               />

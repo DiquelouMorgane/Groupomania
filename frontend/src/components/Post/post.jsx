@@ -5,7 +5,7 @@ import PostForm from "./PostForm";
 
 const GetAllPosts = () => {
     const [data, setData] = useState([])
-    const Token = localStorage.getItem("token")
+    const Token = localStorage.getItem("Token")
     const userId = JSON.parse(localStorage.getItem("newUser")).id 
 
     useEffect(() => {
@@ -14,7 +14,6 @@ const GetAllPosts = () => {
             headers: {
                 "authorization": Token,
             },
-            params: {userId: userId},
         })
         .then(res => {
             setData(res.data)

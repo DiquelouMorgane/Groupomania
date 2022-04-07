@@ -37,7 +37,7 @@ const Login = () => {
       })
       .catch(err => {
         console.log(err)
-        setErrorData("Mot de passe erroné !")
+        setErrorData("Utilisateur innexistant !")
       })
   }
 

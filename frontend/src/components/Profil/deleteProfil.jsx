@@ -37,7 +37,7 @@ const DeleteProfil = () => {
       }}
     >
       <img
-        src={"../images/icons/delete.svg"}
+        src={"../images/icons/delete.png"}
         alt="delete-comment"
         className="delete-img"
       />

@@ -10,7 +10,7 @@ useEffect(() => {
     setMessage()
   }, [message])
 
-const userId = JSON.parse(localStorage.getItem("newUser")).id
+const user_id = JSON.parse(localStorage.getItem("newUser")).id
 
 //Resgister//
 const {
@@ -24,10 +24,10 @@ const onSubmit = data => {
       method: "POST",
       url: "http://localhost:5000/api/comments",
       headers: {
-        "authorization": localStorage.getItem("token"),
+        "authorization": localStorage.getItem("Token"),
       },
       data: {
-        users_id: userId,
+        users_id: user_id,
         post_id: props.postId,
         content: data.content,
       },
@@ -64,7 +64,7 @@ return (
         <input
           className="comment-button button"
           type="image"
-          src="./images/send.png"
+          src="../images/icons/send.png"
           alt="send"
         />
       </form>

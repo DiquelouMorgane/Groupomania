@@ -13,26 +13,26 @@ const CommentsCard = props => {
 
   let newUser = JSON.parse(localStorage.getItem("newUser"))
   let users_id = newUser.id
-  let users_admin = newUser.admin
+  let users_isAdmin = newUser.isAdmin
 
   useEffect(() => {
-    if (comments.users_id === users_id || users_admin === 1) {
+    if (comments.users_id === users_id || users_isAdmin === 1) {
       setShowDeleteIcon(true)
     }
-  }, [users_id, comments.users_id, users_admin])
+  }, [users_id, comments.users_id, users_isAdmin])
 
   const handleDelete = () => {
     axios({
       method: "DELETE",
       url: "http://localhost:5000/api/comments",
       headers: {
-        "authorization": localStorage.getItem("token"),
+        "authorization": localStorage.getItem("Token"),
       },
       params: {userId: users_id},
       data: {
         users_id,
         id: comments.id,
-        admin: users_admin,
+        isAdmin: users_isAdmin,
       },
     })
       .then(res => {
@@ -64,7 +64,7 @@ const CommentsCard = props => {
               }}
             >
               <img
-                src={"../images/delete.svg"}
+                src={"../images/icons/delete.png"}
                 alt="delete-comment"
                 className="delete-img"
               />

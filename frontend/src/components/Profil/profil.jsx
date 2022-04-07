@@ -2,7 +2,10 @@ import axios from "axios"
 import {useForm} from "react-hook-form"
 import DeleteProfil from "./deleteProfil"
 
-const Profil = () => {
+axios.defaults.headers.post["Content-Type"] =
+  "application/x-www-form-urlencoded"
+
+const UpdateProfil = () => {
   const newUser = JSON.parse(localStorage.getItem("newUser"))
   const firstNameUser = newUser.firstName
   const lastNameUser = newUser.lastName
@@ -27,7 +30,6 @@ const Profil = () => {
       headers: {
         "authorization": localStorage.getItem("Token"),
       },
-      params: {userId: id},
       data: {
         id,
         firstName,
@@ -122,4 +124,4 @@ const Profil = () => {
   )
 }
 
-export default Profil;
+export default UpdateProfil;
