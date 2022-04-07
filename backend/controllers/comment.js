@@ -13,7 +13,7 @@ exports.createComment = async (req, res) => {
         const comment = await Comment.create({
             content: req.body.content,
             users_id: req.body.users_id,
-            post_id: req.body.users_id,
+            post_id: req.body.post_id,
         })
         comment.dataValues.users = user.dataValues
         console.log("Comment created !", comment.dataValues)
@@ -25,6 +25,6 @@ exports.createComment = async (req, res) => {
 
 //Delete a comment//
 exports.deleteComment = async (req, res) => {
-    const comment = await Comment.destroy({where: {id:req.body.id}})
+    const comment = await Comment.destroy({where: {id: req.body.id}})
     res.status(200).json({comment, message: "Commentaire supprimé !"})
 };

@@ -1,5 +1,5 @@
 const db = require("../models");
-const User = db.posts;
+const User = db.users;
 
 //Modify a user//
 const updateUser = async (req, res) => {
@@ -20,7 +20,7 @@ const updateUser = async (req, res) => {
         }
         try {
             user.save({})
-            console.log("New infos user : ", user)
+            console.log("New newUser : ", user)
             res.status(200).json({
                 user: user,
                 backMessage: "Votre profil a bien été mis à jour !",

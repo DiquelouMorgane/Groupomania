@@ -1,5 +1,6 @@
 const db = require("../models");
 const Post = db.posts;
+const User = db.users;
 const fs = require('fs');
 
 //Create a post//
@@ -7,7 +8,7 @@ const createPost = async (req, res) => {
     try {
         const user = await User.findOne({
             attributes: ["firstName", "lastName", "id"],
-            where: {id: req.body.userId},
+            where: {id: req.body.user_id},
         })
         if (user !== null) {
             console.log("user : ", user)
@@ -19,17 +20,16 @@ const createPost = async (req, res) => {
                 imageUrl = null
             }
             const post = await Post.create({
-                users_id: req.body.userId,
+                users_id: req.body.user_id,
                 text_content: req.body.text_content,
                 imageUrl: imageUrl,
             })
-            post.dataValues.users = users.dataValues
-            console.log("Post créé : ", post.dataValues)
             res.status(201).json({post: post})
         } else {
             res.status(400).json({réponse: "L'utilisateur n'existe pas !"})
         }
     } catch (error) {
+        console.log(error);
         return res.status(500).send({error: "Erreur serveur !"})
     }
 };
