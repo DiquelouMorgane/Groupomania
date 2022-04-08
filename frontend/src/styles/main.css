@@ -82,7 +82,7 @@ span {
 }
 
 .nav-links li {
-  margin: 5px 30px;
+  margin: 5px 15px;
 }
 
 .nav-links li img {
@@ -113,7 +113,6 @@ span {
   .nav-logo-link-community {
     font-family: "Lora", serif;
     font-size: 1.8rem;
-    color: #b61f1f;
   }
   .nav-links {
     list-style: none;
@@ -123,7 +122,7 @@ span {
     margin: 0 auto;
   }
   .nav-links li {
-    margin: 5px 30px;
+    margin: 5px 15px;
   }
   .nav-links li img {
     width: 60px;
@@ -404,7 +403,7 @@ footer .logofooter {
 
 .posts .posts-list {
   margin: 10px auto;
-  width: 50%;
+  width: 80%;
   min-width: 360px;
 }
 
@@ -467,6 +466,14 @@ footer .logofooter {
           justify-content: space-between;
 }
 
+@media screen and (max-width: 700px) {
+  .posts .posts-list .card .data-footer .comment-icone {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+  }
+}
+
 .posts .posts-list .card .data-footer .comment-icone img {
   width: 40px;
   height: 40px;
@@ -488,7 +495,7 @@ footer .logofooter {
     padding: 10px 0;
   }
   .posts .post-form {
-    width: 100%;
+    width: 95%;
     min-width: 0px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
