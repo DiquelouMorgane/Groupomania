@@ -6,6 +6,7 @@ const MIME_TYPES = {
     'images/jpeg': 'jpg',
     'images/png': 'png',
     'images.gif': 'gif',
+    "image.webp": "webp",
 };
 
 //Tell how to handle images files and where to stock them//

@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 require("dotenv").config();
 
 const User = db.users;
+
+// **************  SIGNUP  *****************//
+
 //Create a new user with security password hash//
 module.exports.signup = async (req, res) => {
     const hash = await bcrypt.hash(req.body.password, 10)
@@ -37,7 +40,9 @@ module.exports.signup = async (req, res) => {
     }
 };
 
-//Find user in database and check the infos (mail and password) to compare them with infos taped, with a secure secret token//
+// **************  LOGIN  *****************//
+
+//Find user in database and check the infos to compare them with infos taped, with a secure secret token//
 module.exports.login = async (req, res) => {
     try {
         const user = await User.findOne({

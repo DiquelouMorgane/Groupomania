@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-//require("dotenv").config();//
 
 //Check if tokens are the same or not to authorize authentification, if it's not, it shows error//
 module.exports = (req, res, next) => {
