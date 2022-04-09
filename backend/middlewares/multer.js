@@ -12,7 +12,7 @@ const MIME_TYPES = {
 //Tell how to handle images files and where to stock them//
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, './upload')
+        callback(null, 'upload')
     },
     filename: (req, file, callback) => {
         const name = file.originalname.replace(/\.[^/.]+$/, "")
