@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 const db = require("./models");
 
 //Save routers//
-app.use('/upload', express.static(path.join(__dirname, 'upload')));
+app.use('/api/upload', express.static(path.join(__dirname, 'upload')));
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
