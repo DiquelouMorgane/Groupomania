@@ -1,7 +1,7 @@
 const db = require("../models");
 const Post = db.posts;
 const User = db.users;
-const fs = require('fs');
+const fs = require("fs");
 
 //Create a post//
 const createPost = async (req, res) => {
@@ -11,10 +11,8 @@ const createPost = async (req, res) => {
             where: {id: req.body.user_id},
         })
         if (user !== null) {
-            console.log("user : ", user)
             let imageUrl
             if (req.file) {
-                console.log("filename : ", req.file.filename)
                 imageUrl = `http://localhost:5000/api/upload/${req.file.filename}`
             } else {
                 imageUrl = null
@@ -29,7 +27,6 @@ const createPost = async (req, res) => {
             res.status(400).json({réponse: "L'utilisateur n'existe pas !"})
         }
     } catch (error) {
-        console.log(error);
         return res.status(500).send({error: "Erreur serveur !"})
     }
 };
@@ -56,7 +53,6 @@ const getAllPosts = async (req, res) => {
                 },
             ],
         }).then(posts => {
-            console.log("Posts : ", posts)
             res.json(posts)
         })
     } catch (error) {
@@ -70,10 +66,8 @@ const getAllPosts = async (req, res) => {
 const deletePost = async (req, res) => {
     try {
         const post = await Post.findOne({where: {id: req.body.id}})
-        console.log("Post found : ", post)
         if (post.imageUrl) {
             const filename = post.imageUrl.split("/upload")[1]
-            console.log("Filename to Delete: ", filename)
             fs.unlink(`upload/${filename}`, () => {
                 Post.destroy({where: {id: req.body.id}})
                 res.status(200).json({message: "Post et image supprimés !"})

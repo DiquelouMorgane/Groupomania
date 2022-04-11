@@ -21,7 +21,6 @@ module.exports.signup = async (req, res) => {
             where: {email: req.body.email},
         })
         if (user) {
-            console.log("Already registered", user.dataValues)
             return res.status(403).send({error: "Vous êtes déjà inscrit !"})
         } else {
             const user = await User.create(newUser)
@@ -51,7 +50,6 @@ module.exports.login = async (req, res) => {
         if (user == null) {
             return res.status(403).send({error: "Vous n'êtes pas encore inscrit !"})
         } else {
-            console.log("User found !", user.dataValues)
             const valid = await bcrypt.compare(req.body.password, user.password)
             if (!valid) {
                 return res.status(401).json({error: "Mot de passe incorrect !"})
