@@ -49,7 +49,6 @@ const PostForm = props => {
         data,
       })
         .then(res => {
-          console.log(res.data.post)
           props.addPost(res.data.post)
         })
         .catch(err => {

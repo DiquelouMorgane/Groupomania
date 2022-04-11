@@ -36,7 +36,6 @@ const CommentsCard = props => {
       },
     })
       .then(res => {
-        console.log(comments)
         props.commentToDelete(comments)
       })
       .catch(err => {

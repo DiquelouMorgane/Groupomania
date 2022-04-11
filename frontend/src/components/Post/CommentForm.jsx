@@ -33,7 +33,6 @@ const onSubmit = data => {
       },
     })
     .then(res => {
-        console.log("res data comment", res.data.comment)
         props.newComment(res.data.comment)
         setMessage("")
     }).catch(err => {

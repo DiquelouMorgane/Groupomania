@@ -138,7 +138,7 @@ span {
 }
 
 footer {
-  background-color: #001c50;
+  background-color: #ff7b77;
 }
 
 footer .logofooter {
@@ -152,7 +152,7 @@ footer .logofooter {
   margin: 20px auto;
   padding: 20px;
   list-style: none;
-  background-color: #e4cece;
+  background-color: #ffd0c4;
 }
 
 @media screen and (max-width: 700px) {

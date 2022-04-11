@@ -19,7 +19,6 @@ const UpdateProfil = () => {
   } = useForm()
 
   const onSubmit = data => {
-    console.log(data)
     let firstName = data.firstName
     let lastName = data.lastName
     let email = data.email

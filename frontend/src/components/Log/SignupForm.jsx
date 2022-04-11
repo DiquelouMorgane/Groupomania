@@ -37,7 +37,6 @@ const SignUpForm = () => {
         navigate("/post")
       })
       .catch(error => {
-        console.log(error)
         setErrorData(
           "Utilisateur déjà existant, veuillez vous connecter !"
         )
