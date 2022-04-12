@@ -1,0 +1,5 @@
+$ SECRET_HOST = localhost
+$ SECRET_USER = Votre Username
+$ SECRET_PASSWORD = Votre Password
+$ SECRET_DB = Votre database Name
+$ SECRET_JWT = Votre token
