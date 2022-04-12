@@ -25,14 +25,14 @@ const PostsCard = props => {
     //Retrieve user infos in localstorage//
     let newUser = JSON.parse(localStorage.getItem("newUser"))
     let users_id = newUser.id
-    let users_admin = newUser.admin
+    let users_isAdmin = newUser.isAdmin
   
     //Delete icon//
     useEffect(() => {
-      if (post.users_id === users_id || users_admin !== null) {
+      if (post.users_id === users_id || users_isAdmin !== null) {
         setShowDeleteIcon(true)
       }
-    }, [users_id, post.users_id, users_admin])
+    }, [users_id, post.users_id, users_isAdmin])
   
     //Delete function//
     const handleDelete = () => {
@@ -45,7 +45,7 @@ const PostsCard = props => {
         data: {
           id: post.id,
           users_id: users_id,
-          admin: users_admin,
+          isAdmin: users_isAdmin,
           post_user_id: post.users_id,
         },
       })
