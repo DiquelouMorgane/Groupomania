@@ -50,7 +50,7 @@ return (
           {...register("content", {
             minLength: {
               value: 10,
-              message: "Votre commentaire doit être de 5 caractères au minimum !",
+              message: "Votre commentaire doit être de 10 caractères au minimum !",
             },
             maxLength: {
               value: 350,
