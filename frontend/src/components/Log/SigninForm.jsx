@@ -33,7 +33,7 @@ const Login = () => {
         let newUser = JSON.stringify(res.data)
         localStorage.setItem("Token", token)
         localStorage.setItem("newUser", newUser)
-        navigate("/post")
+        navigate("/profil")
       })
       .catch(err => {
         setErrorData("Utilisateur innexistant !")

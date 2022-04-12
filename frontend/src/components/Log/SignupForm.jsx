@@ -35,7 +35,7 @@ const SignUpForm = () => {
         let newUser = JSON.stringify(res.data)
         localStorage.setItem("Token", token)
         localStorage.setItem("newUser", newUser)
-        navigate("/post")
+        navigate("/profil")
       })
       .catch(error => {
         setErrorData(
