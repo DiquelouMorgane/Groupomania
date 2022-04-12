@@ -14,13 +14,13 @@ const CommentsCard = props => {
 
   let newUser = JSON.parse(localStorage.getItem("newUser"))
   let users_id = newUser.id
-  let users_isAdmin = newUser.isAdmin
+  let users_admin = newUser.admin
 
   useEffect(() => {
-    if (comments.users_id === users_id || users_isAdmin === 1) {
+    if (comments.users_id === users_id || users_admin !== null) {
       setShowDeleteIcon(true)
     }
-  }, [users_id, comments.users_id, users_isAdmin])
+  }, [users_id, comments.users_id, users_admin])
 
   const handleDelete = () => {
     axios({
@@ -33,7 +33,7 @@ const CommentsCard = props => {
       data: {
         users_id,
         id: comments.id,
-        isAdmin: users_isAdmin,
+        admin: users_admin,
       },
     })
       .then(res => {
