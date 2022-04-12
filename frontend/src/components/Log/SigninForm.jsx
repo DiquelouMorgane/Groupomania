@@ -2,6 +2,7 @@ import axios from "axios"
 import {useNavigate} from "react-router-dom"
 import {useForm} from "react-hook-form"
 import {useState} from "react"
+import {REACT_APP_API_URL} from "../../utils/config"
 
 const Login = () => {
   // useState
@@ -21,7 +22,7 @@ const Login = () => {
     // axios
     axios({
       method: "POST",
-      url: `http://localhost:5000/api/auth/login`,
+      url: `${REACT_APP_API_URL}/auth/login`,
       data: {
         email: data.email,
         password: data.password,

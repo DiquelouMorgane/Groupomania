@@ -1,6 +1,7 @@
 import axios from "axios"
 import {useForm} from "react-hook-form"
 import DeleteProfil from "./deleteProfil"
+import {REACT_APP_API_URL} from "../../utils/config"
 
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded"
@@ -25,7 +26,7 @@ const UpdateProfil = () => {
 
     axios({
       method: "PUT",
-      url: "http://localhost:5000/api/users",
+      url: `${REACT_APP_API_URL}/users`,
       headers: {
         "authorization": localStorage.getItem("Token"),
       },

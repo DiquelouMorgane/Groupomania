@@ -2,6 +2,7 @@ import axios from "axios";
 import React, {useState, useEffect} from "react";
 import CommentForm from "./CommentForm";
 import CommentsCard from "./CommentsCard";
+import {REACT_APP_API_URL} from "../../utils/config"
 
 //Daysjs part//
 import dayjs from "dayjs"
@@ -37,7 +38,7 @@ const PostsCard = props => {
     const handleDelete = () => {
       axios({
         method: "DELETE",
-        url: "http://localhost:5000/api/posts",
+        url: `${REACT_APP_API_URL}/posts`,
         headers: {
           "authorization": localStorage.getItem("Token"),
         },

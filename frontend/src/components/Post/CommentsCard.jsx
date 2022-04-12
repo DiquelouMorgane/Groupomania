@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import dayjs from "dayjs";
+import {REACT_APP_API_URL} from "../../utils/config"
 
 //DAYJS//
 require("dayjs/locale/fr")
@@ -24,7 +25,7 @@ const CommentsCard = props => {
   const handleDelete = () => {
     axios({
       method: "DELETE",
-      url: "http://localhost:5000/api/comments",
+      url: `${REACT_APP_API_URL}/comments`,
       headers: {
         "authorization": localStorage.getItem("Token"),
       },

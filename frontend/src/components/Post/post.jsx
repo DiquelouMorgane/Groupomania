@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PostsCard from "./PostsCard";
 import PostForm from "./PostForm";
+import {REACT_APP_API_URL} from "../../utils/config"
 
 const GetAllPosts = () => {
     const [data, setData] = useState([])
@@ -10,7 +11,7 @@ const GetAllPosts = () => {
 
     useEffect(() => {
         axios
-        .get("http://localhost:5000/api/posts", {
+        .get(`${REACT_APP_API_URL}/posts`, {
             headers: {
                 "authorization": Token,
             },

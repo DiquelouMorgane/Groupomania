@@ -1,7 +1,7 @@
 import axios from "axios";
 import {useState} from "react";
 import {useForm} from "react-hook-form";
-
+import {REACT_APP_API_URL} from "../../utils/config"
 
 const PostForm = props => {
   const {
@@ -42,7 +42,7 @@ const PostForm = props => {
       // POST
       await axios({
         method: "POST",
-        url: "http://localhost:5000/api/posts",
+        url: `${REACT_APP_API_URL}/posts`,
         headers: {
           "authorization": `Bearer ${localStorage.getItem("Token")}`,
         },

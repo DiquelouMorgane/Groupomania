@@ -1,4 +1,5 @@
 import axios from "axios"
+import {REACT_APP_API_URL} from "../../utils/config"
 
 const DeleteProfil = () => {
   const handleDelete = () => {
@@ -6,7 +7,7 @@ const DeleteProfil = () => {
     let userId = newUser.id
     axios({
       method: "DELETE",
-      url: "http://localhost:5000/api/users",
+      url: `${REACT_APP_API_URL}/users`,
       headers: {
         "authorization": localStorage.getItem("Token"),
       },

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useForm} from "react-hook-form";
+import {REACT_APP_API_URL} from "../../utils/config"
 
 const CommentForm = props => {
 const [message, setMessage] = useState()
@@ -22,7 +23,7 @@ const {
 const onSubmit = data => {
     axios({
       method: "POST",
-      url: "http://localhost:5000/api/comments",
+      url: `${REACT_APP_API_URL}/comments`,
       headers: {
         "authorization": localStorage.getItem("Token"),
       },
