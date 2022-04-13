@@ -26,27 +26,27 @@ Compétences évaluées :
 ### Pour lancer Groupomania :
 Créez un fichier .env dans le back-end
 ```
-$ SECRET_HOST = localhost
-$ SECRET_USER = Votre Username
-$ SECRET_PASSWORD = Votre Password
-$ SECRET_DB = Votre database Name
-$ SECRET_JWT = Votre token
+SECRET_HOST = localhost
+SECRET_USER = Votre Username
+SECRET_PASSWORD = Votre Password
+SECRET_DB = Votre database Name
+SECRET_JWT = !J!{0|e{4:x=bpbr7S3mB7J5?(4Fs5(@R,c83\M?[gx[Gt6/JE!Ez+wXtrR)   (Exemple de Token généré aléatoirement).
 ```
 Clônez le repo, puis ouvrez le terminal de commande
 Back + dépendances
 ```
-$ cd back-end/ && npm i
+cd back-end/ && npm i
 ```
 Démarrez le server
 ```
-$ nodemon server
+nodemon server
 ```
 Ouvrez un nouveau terminal
 ```
-$ cd front-end
+cd front-end
 ```
 Lancez react :
 ```
-$ npm start
+npm start
 ```
 Bonne visite !
