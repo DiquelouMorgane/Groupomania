@@ -1,11 +1,12 @@
 const dbConfig = require("../config/db");
-
+require("dotenv").config();
 const {Sequelize, DataTypes} = require("sequelize");
 
 // Configuration sequelize
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
+  port: process.env.SECRET_PORT,
   pool: {
     max: dbConfig.pool.max,
     min: dbConfig.pool.min,
