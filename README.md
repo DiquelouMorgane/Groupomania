@@ -1,29 +1,40 @@
-# DiquelouMorgane_7_19022022
-# GROUPOMANIA 
+# Open-Classrooms-Septieme-Projet-Groupomania 🔨
 
-🔨 Projet 7 - Créez un réseau social d’entreprise "GROUPOMANIA"
+Groupomania est le septième et dernier projet du parcours de Développeur Web proposé par l'organisme de formation Open Classrooms. Ceci est une version améliorée du projet de base, j'espère que vous apprécierez le projet !
 
-Compétences évaluées :
+## Contexte :
+
+Vous êtes développeur depuis plus d'un an chez CONNECT-E, une petite agence web regroupant une douzaine d'employés.
+
+Votre directrice, Stéphanie, vient de signer un nouveau contrat avec Groupomania, un groupe spécialisé dans la grande distribution, et l'un des plus fidèles clients de l'agence.
+
+Le projet consiste à construire un réseau social interne pour les employés de Groupomania. Le but de cet outil est de faciliter les interactions entre collègues. Le département RH de Groupomania a imaginé plusieurs fonctionnalités pour favoriser les échanges entre collègues.
+
+## Compétences évaluées :
+
 - Authentifier un utilisateur et maintenir sa session
 - Personnaliser le contenu envoyé à un client web
 - Gérer un stockage de données à l'aide de SQL
 - Implémenter un stockage de données sécurisé en utilisant SQL
 - Respecter les spécifications fonctionnelles et techniques
 
-### Les technologies sont les suivantes :
+## Technologies utilisées :
+
 #### FRONT : 
+
 - React
 - Sass (node-sass)
 - Packages (axios, dayJs, react-dom, react-router-dom)
+
 #### BACK : 
+
 - NodeJS
 - Express
 - MySQL
 - Packages (bcrypt, cors, dotenv, file-system/fs, jsonwebtoken, sequelize, mysql2, nodemon, multer)
 
-
-
 ### Pour lancer Groupomania :
+
 Créez un fichier .env dans le back-end
 ```
 SECRET_HOST = localhost
@@ -50,4 +61,4 @@ Lancez react :
 ```
 npm start
 ```
-Bonne visite !
+### Bonne découverte !
